@@ -15,5 +15,6 @@ def u(eps):
     if k >= 100: raise Exception("Couldn't compute result")
     return k - 1, acc, abs(math.pi**2 - acc)
 
-print(*u(0.0000000000001))
-# for i in range(8, 16):
+for i in range(8, 16):
+    res = u(10**(-i))
+    print(f"n = {res[0]} | val = {res[1]} | err = {res[2]}")
