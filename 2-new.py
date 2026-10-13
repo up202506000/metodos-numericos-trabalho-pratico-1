@@ -1,7 +1,7 @@
 import math
 import bisect
 
-def u(eps):
+def S(eps):
 
     # Variables
     lst = []
@@ -40,7 +40,7 @@ def u(eps):
 
 # Tests
 for i in range(8, 16):
-    res = u(10**(-i))
+    res = S(10**(-i))
     print("----------------------------------------------------------------")
     print(f"n   = {res[0]}")
     print(f"val = {res[1]}")

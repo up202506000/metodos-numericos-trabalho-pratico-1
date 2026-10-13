@@ -1,6 +1,6 @@
 import math
 
-def u(eps):
+def S(eps):
     acc = 0.0
     ter = 9.0
     err = math.inf
@@ -14,5 +14,5 @@ def u(eps):
     return k - 1, acc, abs(math.pi**2 - acc)
 
 for i in range(8, 16):
-    res = u(10**(-i))
+    res = S(10**(-i))
     print(f"n = {res[0]} | val = {res[1]} | err = {res[2]}")

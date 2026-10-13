@@ -1,7 +1,7 @@
 from fp import *
 import math
 
-def u(eps):
+def S(eps):
     acc = FP(0.0)
     ter = FP(9.0)
     err = FP(math.inf)
@@ -19,7 +19,7 @@ def u(eps):
     )
 
 for i in range(8, 16):
-    res = u(10**(-i))
+    res = S(10**(-i))
     print("----------------------------------------------------------------")
     print(f"n      = {res[0]}")
     print(f"val    = {res[1]}")
