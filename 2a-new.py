@@ -9,7 +9,7 @@ def u(eps):
     top = 1
     bot = 1
     k = 1
-    while (err > eps):
+    while (err > eps and k < 25):
         lst.append(ter)
         top *= k ** 2
         bot *= (2*k + 1) * (2*k + 2)
@@ -21,7 +21,7 @@ def u(eps):
         k - 1,
         res,
         err,
-        math.nextafter(abs(math.pi**2 - float(res)), math.inf)
+        abs(math.pi**2 - float(res)), math.inf
     )
 
 for i in range(8, 16):
