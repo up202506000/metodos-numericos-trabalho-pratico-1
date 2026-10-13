@@ -5,7 +5,24 @@
 \usepackage{geometry}
 \usepackage{float}
 \usepackage{amsmath}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{listings}
 \geometry{a4paper, margin=2.5cm}
+\definecolor{codebg}{HTML}{eeeeee}
+\definecolor{codeframe}{HTML}{000000}
+
+\lstdefinestyle{pythoncode}{
+    language=Python,
+    basicstyle=\ttfamily,
+    backgroundcolor=\color{codebg},
+    frame=single,
+    rulecolor=\color{codeframe},
+    framerule=1pt,
+    framesep=10pt,
+    lineskip=0pt,
+    breaklines=true,
+    showstringspaces=false
+}
 
 \begin{document}
 
@@ -43,48 +60,82 @@
 \end{titlepage}
 
 \section{Motivação do trabalho}
-Este trabalho prático tem como foco a resolução de problemas de aproximação de constantes matemáticas (como $e$ e $\pi^2$) em ambiente computacional, exigindo que os resultados cumpram critérios de paragem analíticos baseados na majoração do erro de truncatura. Paralelamente, procuramos investigar o limite de precisão da máquina (epsilon da máquina) e como este influencia, e por vezes corrompe, os resultados obtidos.
+Este trabalho prático tem como foco a resolução de problemas de 
+aproximação de constantes matemáticas (como $e$ e $\pi^2$) em ambiente 
+computacional, exigindo que os resultados cumpram critérios de paragem 
+analíticos baseados na majoração do erro de truncatura. Paralelamente, 
+procuramos investigar o limite de precisão da máquina (epsilon da máquina) 
+e a propagação de erros em virgula flutuante para ver como estes podem
+influenciar os resultados obtidos.
 
 \section{Resolução da Questão 3}
 
 \subsection{Métodos}
-Para a aproximação da constante de Euler ($e \approx 2.71828...$), o guião sugere a utilização de duas abordagens matemáticas distintas, a Fórmula A e a Fórmula B, definidas respetivamente por:
+Para a aproximação da constante de Euler ($e \approx 2.71828...$), o 
+guião sugere a utilização de duas abordagens matemáticas distintas, 
+a Fórmula A e a Fórmula B, definidas respetivamente por:
+
 \[ \text{Fórmula A: } \quad a_n = \left(1 + \frac{1}{n}\right)^n \]
 \[ \text{Fórmula B: } \quad b_m = \sum_{k=0}^{m} \frac{1}{k!} \]
 
-A implementação da Fórmula A consiste na tradução direta da expressão algébrica numa função simples:
+A implementação da Fórmula A consiste na tradução direta da expressão 
+algébrica numa função simples:
 
-\begin{verbatim}
+\begin{center}
+\begin{minipage}{0.8\linewidth}
+\begin{lstlisting}[style=pythoncode]
 def a_euler(n):
-    return (1 + 1/n)**n
-\end{verbatim}
+    return (1 + 1/n)**n>
+\end{lstlisting}
+\end{minipage}
+\end{center}
 
-Já na Fórmula B, o algoritmo baseia-se num ciclo \texttt{while (k <= m)} que vai acumulando os termos da série a cada iteração. Para otimizar o código, evitamos o cálculo repetitivo de fatoriais do zero a cada iteração implementando uma relação de recorrência. Sabendo que o termo geral da série é $a_k = \frac{1}{k!}$, o termo seguinte pode ser deduzido a partir do termo atual através da expressão:
+Já na Fórmula B, o algoritmo baseia-se num ciclo \texttt{while (k <= m)} 
+que vai acumulando os termos da série a cada iteração. Para otimizar o 
+código, evitamos o cálculo repetitivo de fatoriais do zero a cada iteração 
+implementando uma relação de recorrência. Sabendo que o termo geral da 
+série é $a_k = \frac{1}{k!}$, o termo seguinte pode ser deduzido a partir 
+do termo atual através da expressão:
 \[ a_{k+1} = \frac{1}{(k+1)!} = \frac{1}{(k+1) \times k!} = a_k \times \frac{1}{k+1} \]
 
-Desta forma, o programa calcula o próximo valor a adicionar à soma multiplicando simplesmente o termo anterior por $\frac{1}{k+1}$:
+Desta forma, o programa calcula o próximo valor a adicionar à soma 
+multiplicando simplesmente o termo anterior por $\frac{1}{k+1}$:
 
-\begin{verbatim}
+\begin{center}
+\begin{minipage}{0.8\linewidth}
+\begin{lstlisting}[style=pythoncode]
 def b_euler(m):
     soma = 0.0
     termo = 1.0
     k = 0
-
     while (k <= m):
         soma += termo
         termo = termo * (1 / (k + 1))
         k += 1
-
     return soma
-\end{verbatim}
+\end{lstlisting}
+\end{minipage}
+\end{center}
 
 \subsection{Discussão dos Resultados}
 
-Pela análise dos resultados da fórmula A (Tabela \ref{tab:formula_a}), observa-se que, ao aumentar o valor de $n$, a sucessão começa a convergir para o valor da constante de Euler. No entanto, a partir de $n=10^{12}$, nota-se o início de uma divergência progressiva em relação ao valor de referência. Esta alteração deve-se à aproximação ao limite de precisão da máquina, o que provoca perdas severas de algarismos significativos. Ao elevar esta base, já com erros de arredondamento, a um expoente muito elevado, o pequeno erro inicial sofre uma propagação massiva que corrompe o resultado final. O caso extremo ocorre quando $n=10^{16}$, onde a parcela $1/n$ ($10^{-16}$) é inferior ao epsilon da máquina. Nesta iteração, o computador não consegue distinguir $1.0$ da soma $1.0 + 10^{-16}$, efetuando o arredondamento para $1.0$. Por fim, a operação realizada é $1.0^{10^{16}}$, o que resulta em $1.0$.
+Pela análise dos resultados da fórmula A (Tabela \ref{tab:formula_a}), 
+observa-se que, ao aumentar o valor de $n$, a sucessão começa a convergir 
+para o valor da constante de Euler. No entanto, a partir de $n=10^{12}$, 
+nota-se o início de uma divergência progressiva em relação ao valor de 
+referência. Esta alteração deve-se à aproximação ao limite de precisão 
+da máquina, o que provoca perdas severas de algarismos significativos. 
+Ao elevar esta base, já com erros de arredondamento, a um expoente muito 
+elevado, o pequeno erro inicial sofre uma propagação massiva que corrompe 
+o resultado final. O caso extremo ocorre quando $n=10^{16}$, onde a parcela 
+$1/n$ ($10^{-16}$) é inferior ao epsilon da máquina. Nesta iteração, 
+o computador não consegue distinguir $1.0$ da soma $1.0 + 10^{-16}$, 
+efetuando o arredondamento para $1.0$. Por fim, a operação realizada 
+é $1.0^{10^{16}}$, o que resulta em $1.0$.
 
 \begin{table}[H]
     \centering
-    \begin{tabular}{|c|l|l|}
+    \begin{tabular}{|c|c|c|}
         \hline
         \textbf{$n$} & \textbf{Resultado} & \textbf{Erro Absoluto Efetivo} \\ \hline
         $10^{1}$  & 2.5937424601000023 & $1.245 \times 10^{-1}$ \\ \hline
@@ -109,7 +160,16 @@ Pela análise dos resultados da fórmula A (Tabela \ref{tab:formula_a}), observa
     \label{tab:formula_a}
 \end{table}
 
-Por outro lado, a fórmula B (Tabela \ref{tab:formula_b}) mostra um comportamento estável. Ao aumentar a quantidade de termos da série, os valores convergem de forma consistente para o valor real da constante, verificando-se uma estagnação a partir da iteração $m=17$. Esta estagnação deve-se ao limite de precisão do computador. Para $m=18$, o termo a adicionar à soma é $1/18! \approx 1.56 \times 10^{-16}$, que é inferior ao epsilon da máquina. Por conseguinte, os termos a partir da décima oitava iteração não agregam qualquer valor à soma acumulada, uma vez que estes excedem a capacidade de representação da mantissa do sistema, sendo ignorados durante o processo de arredondamento.
+Por outro lado, a fórmula B (Tabela \ref{tab:formula_b}) mostra um 
+comportamento estável. Ao aumentar a quantidade de termos da série, 
+os valores convergem de forma consistente para o valor real da constante, 
+verificando-se uma estagnação a partir da iteração $m=17$. Esta estagnação 
+deve-se ao limite de precisão do computador. Para $m=18$, o termo a 
+adicionar à soma é $1/18! \approx 1.56 \times 10^{-16}$, que é inferior 
+ao epsilon da máquina. Por conseguinte, os termos a partir da décima 
+oitava iteração não agregam qualquer valor à soma acumulada, uma vez que 
+estes excedem a capacidade de representação da mantissa do sistema, sendo 
+ignorados durante o processo de arredondamento.
 
 \begin{table}[H]
     \centering
