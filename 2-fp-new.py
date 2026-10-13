@@ -6,14 +6,10 @@ def S(eps):
     lst = []
     ter = FP(9.0)
     err = FP(math.inf)
-    top = 1
-    bot = 1
     k = 1
     while (err > eps and k < 25):
         lst.append(ter)
-        top *= k ** 2
-        bot *= (2*k + 1) * (2*k + 2)
-        ter = FP(9 * top) / bot
+        ter *= (k**2) / ((2*k + 1) * (2*k + 2))
         err = FP(4/3) * ter
         k += 1
     res = fp.sum(*lst) # Sums while minimizing error

@@ -7,17 +7,13 @@ def S(eps):
     lst = []
     ter = 9.0
     err = math.inf
-    top = 1
-    bot = 1
     k = 1
     res = 0.0
 
     # Calculate terms
     while (err > eps and k < 25):
-        ter = (9 * top) / bot
         lst.append(ter)
-        top *= k ** 2
-        bot *= (2*k + 1) * (2*k + 2)
+        ter *= (k**2) / ((2*k + 1) * (2*k + 2))
         err = (4/3) * ter
         k += 1
 
@@ -30,8 +26,6 @@ def S(eps):
     res = lst[0]
 
     # Return number of iterations, result and absolute error
-    # (The absolute error is given with respect to the double
-    # precision representation of pi^2 and not pi^2 itself)
     return (
         k - 1,
         res,
