@@ -1,0 +1,35 @@
+from fp import FP as FP
+import fp
+import math
+
+def u(eps):
+    lst = []
+    ter = FP(9)
+    err = FP(math.inf)
+    top = 1
+    bot = 1
+    k = 1
+    while (err > eps):
+        lst.append(ter)
+        top *= k ** 2
+        bot *= (2*k + 1) * (2*k + 2)
+        ter = FP(9 * top) / bot
+        err = FP(4/3) * ter
+        k += 1
+    res = fp.sum(*lst) # Sums while minimizing error
+    return (
+        k - 1,
+        res,
+        err,
+        math.nextafter(abs(math.pi**2 - float(res)), math.inf)
+    )
+
+for i in range(8, 16):
+    res = u(10**(-i))
+    print("----------------------------------------------------------------")
+    print(f"n      = {res[0]}")
+    print(f"val    = {res[1]}")
+    print(f"errUpb = {res[2]}")
+    print(f"errAbs = {res[3]}")
+    print(f"eps    = 10^(-{i})")
+print("----------------------------------------------------------------")
