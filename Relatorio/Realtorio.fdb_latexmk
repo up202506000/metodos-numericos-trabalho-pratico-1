@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1791881953.66612 "/home/filipe/Desktop/repos/metodos-numericos-trabalho-pratico-1/Realtorio.tex" "Realtorio.pdf" "Realtorio" 1791881954.729 2
+["pdflatex"] 1791882349.76028 "/home/filipe/Desktop/repos/metodos-numericos-trabalho-pratico-1/Relatorio/Realtorio.tex" "Realtorio.pdf" "Realtorio" 1791882350.86797 2
   "/etc/texmf/web2c/texmf.cnf" 1791536326.40431 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/filipe/Desktop/repos/metodos-numericos-trabalho-pratico-1/Realtorio.tex" 1791881412.17281 8029 6701cd8ce6cb06fe27e4a3af18fe5391 ""
+  "/home/filipe/Desktop/repos/metodos-numericos-trabalho-pratico-1/Relatorio/Realtorio.tex" 1791881412.17281 8029 6701cd8ce6cb06fe27e4a3af18fe5391 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
@@ -57,9 +57,9 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1791536338.39027 125915 807ff72f6023b33a59c427bfd156a3d1 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1791536404 6800790 73a082ed8a54e377b58f5f76715b9d0d ""
-  "Realtorio.aux" 1791881954.5077 981 dec865ebb9666746366a25c0d4f789be "pdflatex"
+  "Realtorio.aux" 1791882350.64892 981 dec865ebb9666746366a25c0d4f789be "pdflatex"
   "Realtorio.tex" 1791881412.17281 8029 6701cd8ce6cb06fe27e4a3af18fe5391 ""
-  "fcup_logo.png" 0 -1 0 ""
+  "fcup_logo.png" 1791882316.09367 5331 3a1db00570233f85bad6c8921e6de9e1 ""
   (generated)
   "Realtorio.aux"
   "Realtorio.log"

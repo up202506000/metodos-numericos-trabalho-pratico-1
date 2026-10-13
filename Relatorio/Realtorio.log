@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.9)  13 OCT 2026 09:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.9)  13 OCT 2026 10:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/filipe/Desktop/repos/metodos-numericos-trabalho-pratico-1/Realtorio.tex
-(/home/filipe/Desktop/repos/metodos-numericos-trabalho-pratico-1/Realtorio.tex
+**/home/filipe/Desktop/repos/metodos-numericos-trabalho-pratico-1/Relatorio/Realtorio.tex
+(/home/filipe/Desktop/repos/metodos-numericos-trabalho-pratico-1/Relatorio/Realtorio.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -262,24 +262,14 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-
-LaTeX Warning: File `fcup_logo.png' not found on input line 15.
-
-
-/home/filipe/Desktop/repos/metodos-numericos-trabalho-pratico-1/Realtorio.tex:15: Package pdftex.def Error: File `fcup_logo.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.15 ...aphics[width=0.4\textwidth]{fcup_logo.png}
-                                                  \par\vspace{1.5cm}
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
+<fcup_logo.png, id=1, 441.65pt x 455.7025pt>
+File: fcup_logo.png Graphic file (type png)
+<use fcup_logo.png>
+Package pdftex.def Info: fcup_logo.png  used on input line 15.
+(pdftex.def)             Requested size: 182.09486pt x 187.88919pt.
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./fcup_logo.png>]
 
 LaTeX Warning: Reference `tab:formula_a' on page 1 undefined on input line 83.
 
@@ -306,18 +296,18 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 4197 strings out of 476182
- 68854 string characters out of 5795595
- 1946975 words of memory out of 5000000
- 26167 multiletter control sequences out of 15000+600000
+ 4174 strings out of 476182
+ 68329 string characters out of 5795595
+ 1947975 words of memory out of 5000000
+ 26144 multiletter control sequences out of 15000+600000
  560815 words of font info for 46 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 61i,10n,69p,1038b,242s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 61i,10n,69p,1048b,242s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on Realtorio.pdf (3 pages, 145382 bytes).
+Output written on Realtorio.pdf (3 pages, 149801 bytes).
 PDF statistics:
- 74 PDF objects out of 1000 (max. 8388607)
+ 76 PDF objects out of 1000 (max. 8388607)
  44 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
