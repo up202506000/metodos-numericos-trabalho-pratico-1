@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1791909429.9918 "/home/filipe/Desktop/repos/metodos-numericos-trabalho-pratico-1/Relatorio/Relatorio.tex" "Relatorio.pdf" "Relatorio" 1791909431.43974 0
+["pdflatex"] 1791910708.02603 "/home/filipe/Desktop/repos/metodos-numericos-trabalho-pratico-1/Relatorio/Relatorio.tex" "Relatorio.pdf" "Relatorio" 1791910709.6243 0
   "/etc/texmf/web2c/texmf.cnf" 1791536326.40431 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/filipe/Desktop/repos/metodos-numericos-trabalho-pratico-1/Relatorio/Relatorio.tex" 1791909426.12682 12278 1994dd0f42805175d58432d7d3be4516 ""
+  "/home/filipe/Desktop/repos/metodos-numericos-trabalho-pratico-1/Relatorio/Relatorio.tex" 1791910645.22047 12788 2e79b7fe75c41c816937a058306ad714 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
@@ -61,8 +61,8 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1791536338.39027 125915 807ff72f6023b33a59c427bfd156a3d1 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1791884469 6801881 0b41a813676c9f916fb5b55fd3c0d798 ""
-  "Relatorio.aux" 1791909431.25716 1604 476ecc75705eac1fc8556818ff207f55 "pdflatex"
-  "Relatorio.tex" 1791909426.12682 12278 1994dd0f42805175d58432d7d3be4516 ""
+  "Relatorio.aux" 1791910709.4306 1565 2b374f93bd1a6b22753ebf713620a5c8 "pdflatex"
+  "Relatorio.tex" 1791910645.22047 12788 2e79b7fe75c41c816937a058306ad714 ""
   "fcup_logo.png" 1791882316.09367 5331 3a1db00570233f85bad6c8921e6de9e1 ""
   (generated)
   "Relatorio.aux"
