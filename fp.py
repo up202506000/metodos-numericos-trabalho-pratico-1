@@ -66,7 +66,7 @@ class FP:
         nums = [
             self.__error,
             other.__error,
-            math.nextafter(value, math.inf) - value
+            (math.nextafter(value, math.inf) - value) / 2
         ]
         nums.sort()
 
@@ -109,7 +109,7 @@ class FP:
             self.__error * other.__error,
             builtins.abs(self.__error * other.__value),
             builtins.abs(self.__value * other.__error),
-            math.nextafter(value, math.inf) - value
+            (math.nextafter(value, math.inf) - value) / 2
         ]
         nums.sort()
 
