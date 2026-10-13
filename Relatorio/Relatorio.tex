@@ -7,6 +7,7 @@
 \usepackage{amsmath}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{listings}
+\usepackage{caption}
 \geometry{a4paper, margin=2.5cm}
 \definecolor{codebg}{HTML}{eeeeee}
 \definecolor{codeframe}{HTML}{000000}
@@ -68,6 +69,45 @@ procuramos investigar o limite de precisão da máquina (epsilon da máquina)
 e a propagação de erros em virgula flutuante para ver como estes podem
 influenciar os resultados obtidos.
 
+\section{Resolução da Questão 2}
+\smallskip
+
+No âmbito da resolução da questão, é pedido que seja calculado um valor aproximado da soma da série dada por:
+\begin{equation}
+    S = 18 \sum_{k=1}^{\infty} \frac{k!^2}{k^2 (2k)!}
+\end{equation}
+\bigskip
+
+Inicialmente, procuramos definir uma simplificação para o termo geral da série S, dado por: $a_k = \frac{k!^2}{k^2 (2k)!}$, de modo a obter uma nova expressão através da qual possamos realizar o cálculo aproximado. Para isso, analisamos o termo seguinte, ou seja, $a_{k+1} = \frac{(k+1)!^2}{(k+1)^2 (2(k+1))!}$, e realizamos a divisão entre os dois termos, obtendo:
+
+\begin{align*}
+    \frac{a_{k+1}}{a_k} &= \frac{(k+1)!^2}{(k+1)^2 (2(k+1))!} \cdot \frac{k^2 (2k)!}{k!^2} \\
+    &= \frac{(k+1)^2 k!^2}{(k+1)^2 (2k+2)(2k+1)(2k)!} \cdot \frac{k^2 (2k)!}{k!^2} \\
+    &= \frac{k^2}{(2k+1)(2k+2)} \\
+    &= \frac{k^2}{4k^2 + 6k + 2}
+\end{align*}
+\bigskip
+
+Após esta simplificação, deduzimos que o termo geral da série S pode ser reescrito como:
+\begin{equation}
+    a_{k+1} = a_k \cdot \frac{k^2}{4k^2 + 6k + 2}
+\end{equation}
+\medskip
+
+De modo a majorar o termo geral da série, podemos observar que, como k é um número natural e maior ou igual a 1, temos $4k^2 + 6k + 2 > 4k^2$, o que nos permite escrever a seguinte desigualdade:
+\begin{equation}
+    \frac{k^2}{4k^2 + 6k + 2} < \frac{k^2}{4k^2} = \frac{1}{4}
+\end{equation}
+\bigskip
+
+Dessa forma, podemos concluir que, como S = $18 \sum_{k=1}^{\infty} a_k$ e k maior ou igual a 1, temos que:
+\smallskip
+
+\begin{equation}
+    R_n < 18 \cdot a_k \sum_{j=0}^{\infty} \frac{1}{4^j} = 18 \cdot a_k \cdot \frac{1}{1 - 1/4} = 18 \cdot \frac{4}{3} \cdot a_k = 24 \cdot a_k
+\end{equation}
+\break
+
 \section{Resolução da Questão 3}
 
 \subsection{Métodos}
@@ -116,6 +156,7 @@ def b_euler(m):
 \end{lstlisting}
 \end{minipage}
 \end{center}
+\break
 
 \subsection{Discussão dos Resultados}
 
@@ -132,12 +173,13 @@ $1/n$ ($10^{-16}$) é inferior ao epsilon da máquina. Nesta iteração,
 o computador não consegue distinguir $1.0$ da soma $1.0 + 10^{-16}$, 
 efetuando o arredondamento para $1.0$. Por fim, a operação realizada 
 é $1.0^{10^{16}}$, o que resulta em $1.0$.
+\bigskip
 
 \begin{table}[H]
     \centering
-    \begin{tabular}{|c|c|c|}
+    \begin{tabular}{|c|l|l|}
         \hline
-        \textbf{$n$} & \textbf{Resultado} & \textbf{Erro Absoluto Efetivo} \\ \hline
+        \textbf{$n$} & \textbf{Resultado A} & \textbf{Erro Absoluto Efetivo} \\ \hline
         $10^{1}$  & 2.5937424601000023 & $1.245 \times 10^{-1}$ \\ \hline
         $10^{2}$  & 2.7048138294215285 & $1.347 \times 10^{-2}$ \\ \hline
         $10^{3}$  & 2.7169239322355936 & $1.358 \times 10^{-3}$ \\ \hline
@@ -159,6 +201,7 @@ efetuando o arredondamento para $1.0$. Por fim, a operação realizada
     \caption{Resultados da aproximação da constante de Euler utilizando a Fórmula A.}
     \label{tab:formula_a}
 \end{table}
+\break
 
 Por outro lado, a fórmula B (Tabela \ref{tab:formula_b}) mostra um 
 comportamento estável. Ao aumentar a quantidade de termos da série, 
@@ -175,7 +218,7 @@ ignorados durante o processo de arredondamento.
     \centering
     \begin{tabular}{|c|l|l|}
         \hline
-        \textbf{$m$} & \textbf{Resultado} & \textbf{Erro Absoluto Efetivo} \\ \hline
+        \textbf{$m$} & \textbf{Resultado B} & \textbf{Erro Absoluto Efetivo} \\ \hline
         $1$  & 2.0000000000000000 & $7.183 \times 10^{-1}$ \\ \hline
         $2$  & 2.5000000000000000 & $2.183 \times 10^{-1}$ \\ \hline
         $3$  & 2.6666666666666665 & $5.162 \times 10^{-2}$ \\ \hline
