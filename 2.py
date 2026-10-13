@@ -14,4 +14,5 @@ def S(eps):
 
 for i in range(8, 16):
     res = S(10**(-i))
-    print(f"n = {res[0]} | val = {res[1]} | err = {res[2]}")
+    s = str(res[2]).split("e")
+    print("$10^-{" + str(i) + "}$ & " + str(res[0]) + " & " + str(res[1]) + " & $" + s[0] + " \\times 10^" + s[1] + "$ \\\\ \\hline")

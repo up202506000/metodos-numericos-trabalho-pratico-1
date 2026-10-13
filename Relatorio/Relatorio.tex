@@ -152,6 +152,35 @@ def S(eps):
 \end{minipage}
 \end{center}
 
+Após executar os testes pedidos no exercicio, obtivemos a seguinte tabela:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|l|l|}
+        \hline
+        \textbf{$\epsilon$} & \textbf{Iterações} & \textbf{Resultado} & \textbf{Erro Absoluto Efetivo} \\ \hline
+        $10^-{8}$  & 13 & 9.869604398132752 & $2.9566056269914043 \times 10^-09$ \\ \hline
+        $10^-{9}$  & 14 & 9.869604400421997 & $6.673612773511195  \times 10^-10$ \\ \hline
+        $10^-{10}$ & 16 & 9.869604401054712 & $3.4646063795662485 \times 10^-11$ \\ \hline
+        $10^-{11}$ & 17 & 9.869604401081402 & $7.956302283673722  \times 10^-12$ \\ \hline
+        $10^-{12}$ & 19 & 9.869604401088933 & $4.2454928461665986 \times 10^-13$ \\ \hline
+        $10^-{13}$ & 21 & 9.869604401089337 & $2.1316282072803006 \times 10^-14$ \\ \hline
+        $10^-{14}$ & 22 & 9.869604401089354 & $3.552713678800501  \times 10^-15$ \\ \hline
+        $10^-{15}$ & 24 & 9.86960440108936  & $1.7763568394002505 \times 10^-15$ \\ \hline
+    \end{tabular}
+    \vspace{0.2cm}
+    \caption{Resultados da aproximação da série S ($\pi^2$)}
+\end{table}
+
+Algo que podemos notar imediatamente após olhar para a tabela é que o
+resultado do ultimo teste está errado. Era esperado um valor com erro
+menor do que $10^{-15}$, no entanto foi calculado um valor de erro
+superior.
+Como $\pi^2$ está entre 8 e 16, o seu expoente em representação
+virgula flutuante binária é igual a 3, e como nós estamos a trabalhar
+com dupla precisão, temos que o erro por arredondamento é de até
+$2^{3-53} = 2^{-50} \approx 8.881784216 \times 10^{16}$, que é muito
+próximo de $10^{-15}$, o
 
 
 \section{Resolução da Questão 3}
@@ -225,7 +254,7 @@ efetuando o arredondamento para $1.0$. Por fim, a operação realizada
     \centering
     \begin{tabular}{|c|l|l|}
         \hline
-        \textbf{$n$} & \textbf{Resultado A} & \textbf{Erro Absoluto Efetivo} \\ \hline
+        \textbf{$n$} & \textbf{Resultado} & \textbf{Erro Absoluto Efetivo} \\ \hline
         $10^{1}$  & 2.5937424601000023 & $1.245 \times 10^{-1}$ \\ \hline
         $10^{2}$  & 2.7048138294215285 & $1.347 \times 10^{-2}$ \\ \hline
         $10^{3}$  & 2.7169239322355936 & $1.358 \times 10^{-3}$ \\ \hline
@@ -264,7 +293,7 @@ ignorados durante o processo de arredondamento.
     \centering
     \begin{tabular}{|c|l|l|}
         \hline
-        \textbf{$m$} & \textbf{Resultado B} & \textbf{Erro Absoluto Efetivo} \\ \hline
+        \textbf{$m$} & \textbf{Resultado} & \textbf{Erro Absoluto Efetivo} \\ \hline
         $1$  & 2.0000000000000000 & $7.183 \times 10^{-1}$ \\ \hline
         $2$  & 2.5000000000000000 & $2.183 \times 10^{-1}$ \\ \hline
         $3$  & 2.6666666666666665 & $5.162 \times 10^{-2}$ \\ \hline
