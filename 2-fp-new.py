@@ -4,7 +4,7 @@ import math
 
 def u(eps):
     lst = []
-    ter = FP(9)
+    ter = FP(9.0)
     err = FP(math.inf)
     top = 1
     bot = 1

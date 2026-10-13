@@ -6,13 +6,11 @@ def u(eps):
     err = math.inf
     rnd = 0.0
     k = 1
-    while (err > eps and k < 100):
+    while (err > eps and k < 50):
         acc += ter
-        rnd += math.nextafter(acc, math.inf) - acc
         ter *= (k ** 2) / ((2*k + 1) * (2*k + 2))
         err = (4/3) * ter + rnd
         k += 1
-    if k >= 100: raise Exception("Couldn't compute result")
     return k - 1, acc, abs(math.pi**2 - acc)
 
 for i in range(8, 16):
