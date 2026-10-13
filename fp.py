@@ -162,11 +162,6 @@ class FP:
     def __rtruediv__(self, other):
         return self.__truediv__(other)
 
-# Absolute value
-def abs(x) -> FP:
-    x = FP(x)
-    return FP(builtins.abs(x.__value), x.__error)
-
 # Sum nums with minimal error
 def sum(*nums) -> FP:
 
