@@ -5,7 +5,7 @@ def S(eps):
     ter = 9.0
     err = math.inf
     k = 1
-    while (err > eps and k < 25):
+    while (err > eps and k < 100):
         acc += ter
         ter *= (k ** 2) / ((2*k + 1) * (2*k + 2))
         err = (4/3) * ter
