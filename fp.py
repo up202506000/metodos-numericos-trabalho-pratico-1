@@ -162,19 +162,23 @@ class FP:
     def __rtruediv__(self, other):
         return self.__truediv__(other)
 
+# Absolute value
+def abs(num: FP) -> FP:
+    return FP(builtins.abs(num.getValue()), num.getUncertainty())
+
 # Sum nums with minimal error
 def sum(*nums) -> FP:
 
     # Convert to FP and sort
     nums = [FP(x) for x in nums]
-    nums.sort()
+    nums.sort(key = abs)
 
     # Remove 2 smallest and insert their sum until 1 remains
     tmp: FP
     while len(nums) > 1:
         tmp = nums[0] + nums[1]
         nums = nums[2:]
-        bisect.insort(nums, tmp)
+        bisect.insort(nums, tmp, key = abs)
 
     # Return result
     return FP(0) if len(nums) == 0 else nums[0]
