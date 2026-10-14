@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1791964319.11904 "/home/filipe/Desktop/repos/metodos-numericos-trabalho-pratico-1/Relatorio/Relatorio.tex" "Relatorio.pdf" "Relatorio" 1791964320.57377 0
+["pdflatex"] 1791969608.77038 "/home/filipe/Desktop/repos/metodos-numericos-trabalho-pratico-1/Relatorio/Relatorio.tex" "Relatorio.pdf" "Relatorio" 1791969610.2787 0
   "/etc/texmf/web2c/texmf.cnf" 1791536326.40431 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/filipe/Desktop/repos/metodos-numericos-trabalho-pratico-1/Relatorio/Relatorio.tex" 1791964291.22309 15415 fcde65470b9ce77fe7f80e6d02b22be9 ""
+  "/home/filipe/Desktop/repos/metodos-numericos-trabalho-pratico-1/Relatorio/Relatorio.tex" 1791969606.76537 17226 12ee4327e485b4d7dbbbef15c2fc73cd ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
@@ -38,8 +38,6 @@
   "/usr/share/texlive/texmf-dist/tex/latex/base/article.cls" 1705352648 20144 147463a6a579f4597269ef9565205cfe ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty" 1705352648 5048 425739d70251273bf93e3d51f3c40048 ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo" 1705352648 8448 dbc0dbf4156c0bb9ba01a1c685d3bad0 ""
-  "/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty" 1696191071 56128 c2ccf1a29d78c33bc553880402e4fb9a ""
-  "/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty" 1696191071 72619 ee90b6612147680fd73c3b1406a74245 ""
   "/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty" 1579991033 13886 d1306dcf79a944f6988e688c1785f9ce ""
   "/usr/share/texlive/texmf-dist/tex/latex/float/float.sty" 1137110151 6749 16d2656a1984957e674b149555f1ea1d ""
   "/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty" 1578002852 41601 9cf6c5257b1bc7af01a58859749dd37a ""
@@ -63,8 +61,8 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1791536338.39027 125915 807ff72f6023b33a59c427bfd156a3d1 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1791884469 6801881 0b41a813676c9f916fb5b55fd3c0d798 ""
-  "Relatorio.aux" 1791964320.40642 1817 5b4648c8e7e763afc7b3901bdfa19637 "pdflatex"
-  "Relatorio.tex" 1791964291.22309 15415 fcde65470b9ce77fe7f80e6d02b22be9 ""
+  "Relatorio.aux" 1791969610.11863 2010 bc7531e9a3997a5d30133a1f5ead7c9e "pdflatex"
+  "Relatorio.tex" 1791969606.76537 17226 12ee4327e485b4d7dbbbef15c2fc73cd ""
   "fcup_logo.png" 1791882316.09367 5331 3a1db00570233f85bad6c8921e6de9e1 ""
   (generated)
   "Relatorio.aux"

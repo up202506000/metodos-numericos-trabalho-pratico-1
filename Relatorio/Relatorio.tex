@@ -7,7 +7,6 @@
 \usepackage{amsmath}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{listings}
-\usepackage{caption}
 \geometry{a4paper, margin=2.5cm}
 \definecolor{codebg}{HTML}{eeeeee}
 \definecolor{codeframe}{HTML}{000000}
@@ -28,6 +27,7 @@
 \begin{document}
 
 \begin{titlepage}
+
     \centering
     \vspace*{1cm}
     \includegraphics[width=0.4\textwidth]{fcup_logo.png}\par\vspace{1.5cm}
@@ -56,7 +56,6 @@
     \end{tabular}
     
     \vfill
-    
     {\large Outubro 2026}\par
 \end{titlepage}
 
@@ -71,12 +70,69 @@ para ver como este pode influenciar os resultados obtidos.
 
 \section{Resolução da Questão 1}
 
-Para este trabalho, decidimos usar a linguagem python.
+Para este trabalho, decidimos usar a linguagem python, o que nos
+facilita muito a vida neste exercicio já que a solução é tão simples
+quanto ler uma constante embutida:
+
+\begin{center}
+\begin{minipage}{0.8\linewidth}
+\begin{lstlisting}[style=pythoncode]
+import sys
+print(sys.float_info.epsilon)
+\end{lstlisting}
+\end{minipage}
+\end{center}
+
+\noindent
+Ainda assim, o exercicio pede para ``calcular'' o valor de epsilon de
+máquina, e aqui não é bem isso que estamos a fazer. Por este motivo
+decidimos implementar algumas maneiras alternativas de obter este valor.
+Uma maneira é encontrar o valor imediatamente maior do que $1$ e
+subtrair $1$:
+
+\begin{center}
+\begin{minipage}{0.8\linewidth}
+\begin{lstlisting}[style=pythoncode]
+import math
+print(math.nextafter(1.0, math.inf) - 1.0)
+\end{lstlisting}
+\end{minipage}
+\end{center}
+
+\noindent
+Alternativamente, se não quisermos importar módulos, podemos
+dividir $1$ por $2$ repetidamente até termos um valor que, ao
+somar a $1$, não altera o valor e retornar o dobro deste
+(Vale constar que isto só funciona porque valores em virgula
+flutuante IEEE 754 realizam arredondamento ao par mais próximo):
+
+\begin{center}
+\begin{minipage}{0.8\linewidth}
+\begin{lstlisting}[style=pythoncode]
+def epsilon():
+    eps = 1.0
+
+    while 1 + eps > 1:
+        eps /= 2
+
+    return eps*2
+
+print(epsilon())
+\end{lstlisting}
+\end{minipage}
+\end{center}
+
+\noindent
+Todos estes programas imprimem o valor de epsilon de máquina para
+precisão dupla:
+
+\[ 2.220446049250313 \times 10^{-16} \]
 
 \pagebreak
 
 \section{Resolução da Questão 2}
 \smallskip
+
 \subsection{Majorar o erro}
 
 No âmbito da resolução da questão, é pedido que seja calculado 
@@ -87,6 +143,7 @@ um valor aproximado da soma da série dada por:
 \end{equation}
 \medskip
 
+\noindent
 Inicialmente, procuramos definir uma simplificação para o termo 
 geral da série S, dado por: $a_k = \frac{k!^2}{k^2 (2k)!}$, de modo 
 a obter uma nova expressão através da qual possamos realizar o 
@@ -102,6 +159,7 @@ divisão entre os dois termos, obtendo:
 \end{align*}
 \medskip
 
+\noindent
 Após esta simplificação, deduzimos que o termo geral da série S 
 pode ser reescrito como:
 
@@ -110,6 +168,7 @@ pode ser reescrito como:
 \end{equation}
 \bigskip
 
+\noindent
 De modo a majorar o termo geral da série, podemos observar que, 
 como k é um número positivo, temos $4k^2 + 6k + 2 > 4k^2$, o que 
 nos permite escrever a seguinte desigualdade:
@@ -120,6 +179,7 @@ nos permite escrever a seguinte desigualdade:
 \end{equation}
 \bigskip
 
+\noindent
 Assim, temos que:
 
 \begin{equation}
@@ -127,6 +187,7 @@ Assim, temos que:
 \end{equation}
 \bigskip
 
+\noindent
 Logo, podemos usar a seguinte formula para majorar o erro:
 \medskip
 
@@ -164,6 +225,7 @@ def S(eps):
 \end{minipage}
 \end{center}
 
+\noindent
 Após executar os testes pedidos no exercicio, obtivemos a seguinte tabela:
 
 \begin{table}[H]
@@ -184,6 +246,7 @@ Após executar os testes pedidos no exercicio, obtivemos a seguinte tabela:
     \caption{Resultados da aproximação da série S ($\pi^2$)}
 \end{table}
 
+\noindent
 Algo que podemos notar olhando para a tabela é que a função falha
 no ultimo teste. Era esperado um valor com erro menor do que $10^{-15}$,
 no entanto foi calculado um valor de erro superior. Como $\pi^2$ está
@@ -254,6 +317,7 @@ def S(eps):
     \caption{Resultados da aproximação da série S ($\pi^2$)}
 \end{table}
 
+\noindent
 Se olharmos de novo para o ultimo teste, vêmos que o erro absoluto agora
 é marcado como $0.0$, isto significa que o resultado é exatamente igual
 à representação de $\pi^2$ em precisão dupla, ou seja, o erro associado
@@ -264,6 +328,7 @@ Assim, o nosso programa satisfaz todos os critérios do exercicio.
 \section{Resolução da Questão 3}
 
 \subsection{Métodos}
+
 Para a aproximação da constante de Euler ($e \approx 2.71828...$), o 
 guião sugere a utilização de duas abordagens matemáticas distintas, 
 a Fórmula A e a Fórmula B, definidas respetivamente por:
@@ -271,6 +336,7 @@ a Fórmula A e a Fórmula B, definidas respetivamente por:
 \[ \text{Fórmula A: } \quad a_n = \left(1 + \frac{1}{n}\right)^n \]
 \[ \text{Fórmula B: } \quad b_m = \sum_{k=0}^{m} \frac{1}{k!} \]
 
+\noindent
 A implementação da Fórmula A consiste na tradução direta da expressão 
 algébrica numa função simples:
 
@@ -283,14 +349,17 @@ def a_euler(n):
 \end{minipage}
 \end{center}
 
+\noindent
 Já na Fórmula B, o algoritmo baseia-se num ciclo \texttt{while (k <= m)} 
 que vai acumulando os termos da série a cada iteração. Para otimizar o 
 código, evitamos o cálculo repetitivo de fatoriais do zero a cada iteração 
 implementando uma relação de recorrência. Sabendo que o termo geral da 
 série é $a_k = \frac{1}{k!}$, o termo seguinte pode ser deduzido a partir 
 do termo atual através da expressão:
+
 \[ a_{k+1} = \frac{1}{(k+1)!} = \frac{1}{(k+1) \times k!} = a_k \times \frac{1}{k+1} \]
 
+\noindent
 Desta forma, o programa calcula o próximo valor a adicionar à soma 
 multiplicando simplesmente o termo anterior por $\frac{1}{k+1}$:
 
@@ -309,9 +378,9 @@ def b_euler(m):
 \end{lstlisting}
 \end{minipage}
 \end{center}
-\break
+\pagebreak
 
-\subsection{Discussão dos Resultados}
+\subsection{Discussão dos Resultados da Formula A}
 
 Pela análise dos resultados da fórmula A (Tabela \ref{tab:formula_a}), 
 observa-se que, ao aumentar o valor de $n$, a sucessão começa a convergir 
@@ -356,6 +425,8 @@ efetuando o arredondamento para $1.0$. Por fim, a operação realizada
 \end{table}
 \pagebreak
 
+\subsection{Discussão dos Resultados da Formula B}
+
 Por outro lado, a fórmula B (Tabela \ref{tab:formula_b}) mostra um 
 comportamento estável. Ao aumentar a quantidade de termos da série, 
 os valores convergem de forma consistente para o valor real da constante, 
@@ -366,6 +437,7 @@ ao epsilon da máquina. Por conseguinte, os termos a partir da décima
 oitava iteração não agregam qualquer valor à soma acumulada, uma vez que 
 estes excedem a capacidade de representação da mantissa do sistema, sendo 
 ignorados durante o processo de arredondamento.
+\bigskip
 
 \begin{table}[H]
     \centering
