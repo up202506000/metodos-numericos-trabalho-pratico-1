@@ -5,7 +5,7 @@ def S(eps):
     ter = 9.0
     err = math.inf
     k = 1
-    while (err > eps and k < 50):
+    while (err > eps and k < 25):
         acc += ter
         ter *= (k ** 2) / ((2*k + 1) * (2*k + 2))
         err = (4/3) * ter
@@ -14,5 +14,9 @@ def S(eps):
 
 for i in range(8, 16):
     res = S(10**(-i))
-    s = str(res[2]).split("e")
-    print("$10^-{" + str(i) + "}$ & " + str(res[0]) + " & " + str(res[1]) + " & $" + s[0] + " \\times 10^" + s[1] + "$ \\\\ \\hline")
+    print("----------------------------------------------------------------")
+    print(f"n   = {res[0]}")
+    print(f"val = {res[1]}")
+    print(f"err = {res[2]}")
+    print(f"eps = 10^(-{i})")
+print("----------------------------------------------------------------")

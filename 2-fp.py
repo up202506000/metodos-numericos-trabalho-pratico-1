@@ -1,4 +1,5 @@
-from fp import *
+from fp import FP as FP
+import fp
 import math
 
 def S(eps):
@@ -6,7 +7,7 @@ def S(eps):
     ter = FP(9.0)
     err = FP(math.inf)
     k = 1
-    while (err > eps):
+    while (err > eps and k < 25):
         acc += ter
         ter *= FP(k ** 2) / ((2*k + 1) * (2*k + 2))
         err = FP(4/3) * ter

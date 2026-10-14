@@ -66,9 +66,10 @@ Este trabalho prático tem como foco a resolução de problemas de
 aproximação de constantes matemáticas (como $e$ e $\pi^2$) em ambiente 
 computacional, exigindo que os resultados cumpram critérios de paragem 
 analíticos baseados na majoração do erro de truncatura. Paralelamente, 
-procuramos investigar o limite de precisão da máquina (epsilon da máquina) 
-e a propagação de erros em virgula flutuante para ver como estes podem
-influenciar os resultados obtidos.
+procuramos investigar o limite de precisão da máquina (epsilon da máquina)
+para ver como este pode influenciar os resultados obtidos.
+
+\pagebreak
 
 \section{Resolução da Questão 2}
 \smallskip
@@ -128,9 +129,9 @@ Logo, podemos usar a seguinte formula para majorar o erro:
 \begin{equation}
     \Delta S_k \leq \frac{a_{k+1}}{1-\frac{1}{4}} = a_{k+1} \times \frac{4}{3}
 \end{equation}
-\break
+\pagebreak
 
-\subsection{Implementação do algoritmo}
+\subsection{Primeiro algoritmo}
 
 Inicialmente, decidimos implementar o algoritmo desta maneira:
 
@@ -138,15 +139,22 @@ Inicialmente, decidimos implementar o algoritmo desta maneira:
 \begin{minipage}{0.8\linewidth}
 \begin{lstlisting}[style=pythoncode]
 def S(eps):
+
+    # Variaveis
     acc = 0.0
     ter = 9.0
     err = math.inf
     k = 1
-    while (err > eps and k < 50):
+
+    # Calcular e somar termos
+    while (err > eps and k < 25):
         acc += ter
         ter *= (k ** 2) / ((2*k + 1) * (2*k + 2))
         err = (4/3) * ter
         k += 1
+        
+    # Retornar o numero de iteracoes,
+    # o resultado e o erro absoluto
     return k - 1, acc, abs(math.pi**2 - acc)
 \end{lstlisting}
 \end{minipage}
@@ -159,28 +167,88 @@ Após executar os testes pedidos no exercicio, obtivemos a seguinte tabela:
     \begin{tabular}{|c|c|l|l|}
         \hline
         \textbf{$\epsilon$} & \textbf{Iterações} & \textbf{Resultado} & \textbf{Erro Absoluto Efetivo} \\ \hline
-        $10^-{8}$  & 13 & 9.869604398132752 & $2.9566056269914043 \times 10^-09$ \\ \hline
-        $10^-{9}$  & 14 & 9.869604400421997 & $6.673612773511195  \times 10^-10$ \\ \hline
-        $10^-{10}$ & 16 & 9.869604401054712 & $3.4646063795662485 \times 10^-11$ \\ \hline
-        $10^-{11}$ & 17 & 9.869604401081402 & $7.956302283673722  \times 10^-12$ \\ \hline
-        $10^-{12}$ & 19 & 9.869604401088933 & $4.2454928461665986 \times 10^-13$ \\ \hline
-        $10^-{13}$ & 21 & 9.869604401089337 & $2.1316282072803006 \times 10^-14$ \\ \hline
-        $10^-{14}$ & 22 & 9.869604401089354 & $3.552713678800501  \times 10^-15$ \\ \hline
-        $10^-{15}$ & 24 & 9.86960440108936  & $1.7763568394002505 \times 10^-15$ \\ \hline
+        $10^{-8}$  & 13 & 9.869604398132752 & $2.9566056269914043 \times 10^-09$ \\ \hline
+        $10^{-9}$  & 14 & 9.869604400421997 & $6.673612773511195  \times 10^-10$ \\ \hline
+        $10^{-10}$ & 16 & 9.869604401054712 & $3.4646063795662485 \times 10^-11$ \\ \hline
+        $10^{-11}$ & 17 & 9.869604401081402 & $7.956302283673722  \times 10^-12$ \\ \hline
+        $10^{-12}$ & 19 & 9.869604401088933 & $4.2454928461665986 \times 10^-13$ \\ \hline
+        $10^{-13}$ & 21 & 9.869604401089337 & $2.1316282072803006 \times 10^-14$ \\ \hline
+        $10^{-14}$ & 22 & 9.869604401089354 & $3.552713678800501  \times 10^-15$ \\ \hline
+        $10^{-15}$ & 24 & 9.86960440108936  & $1.7763568394002505 \times 10^-15$ \\ \hline
     \end{tabular}
     \vspace{0.2cm}
     \caption{Resultados da aproximação da série S ($\pi^2$)}
 \end{table}
 
-Algo que podemos notar imediatamente após olhar para a tabela é
-que a função falha no ultimo teste. Era esperado um valor com erro
-menor do que $10^{-15}$, no entanto foi calculado um valor de erro
-superior. Como $\pi^2$ está entre 8 e 16, o seu expoente em
-representação virgula flutuante binária é igual a 3, e como nós estamos
-a trabalhar com dupla precisão, temos que o erro por arredondamento é
-de até $2^{3-53} = 2^{-50} \approx 9 \times 10^{-16}$, o que é
-muito próximo de $10^{-15}$. Isto significa que é muito dificil de
-obter um erro menor do que $10^{-15}$, mas não é impossivel.
+Algo que podemos notar olhando para a tabela é que a função falha
+no ultimo teste. Era esperado um valor com erro menor do que $10^{-15}$,
+no entanto foi calculado um valor de erro superior. Como $\pi^2$ está
+entre 8 e 16, o seu expoente em representação virgula flutuante binária
+é igual a 3, e como nós estamos a trabalhar com dupla precisão, temos
+que o erro por arredondamento é de até
+$2^{3-53} = 2^{-50} \approx 9 \times 10^{-16}$, o que é muito próximo
+de $10^{-15}$. Isto significa que é muito dificil de obter um erro menor
+do que $10^{-15}$, mas não é impossivel.
+\pagebreak
+
+\subsection{Segundo algoritmo}
+
+Modificando o programa para, em vez de somar os termos à medida que os
+calcula, realizar as somas de menor magnitude primeiro de modo a
+minimizar os erros por arredondamento, obtemos o seguinte código
+e tabela:
+
+\begin{center}
+\begin{minipage}{0.8\linewidth}
+\begin{lstlisting}[style=pythoncode]
+def S(eps):
+
+    # Variaveis
+    lst = []
+    ter = 9.0
+    err = math.inf
+    k = 1
+    res = 0.0
+
+    # Calcular termos
+    while (err > eps and k < 25):
+        lst.append(ter)
+        ter *= (k**2) / ((2*k + 1) * (2*k + 2))
+        err = (4/3) * ter
+        k += 1
+
+    # Somar em ordem crescente de magnitude
+    lst.sort(key = abs)
+    while len(lst) > 1:
+        res = lst[0] + lst[1]
+        lst = lst[2:]
+        bisect.insort(lst, res, key = abs)
+    res = lst[0]
+
+    # Retornar o numero de iteracoes,
+    # o resultado e o erro absoluto
+    return (k - 1, res, abs(math.pi**2 - res))
+\end{lstlisting}
+\end{minipage}
+\end{center}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|l|l|}
+        \hline
+        \textbf{$\epsilon$} & \textbf{Iterações} & \textbf{Resultado} & \textbf{Erro Absoluto Efetivo} \\ \hline
+        $10^{-8}$  & 13 & 9.86960439813275  & $2.9566074033482437 \times 10^-09$ \\ \hline
+        $10^{-9}$  & 14 & 9.869604400421997 & $6.673612773511195 \times 10^-10$  \\ \hline
+        $10^{-10}$ & 16 & 9.86960440105471  & $3.4647840152501885 \times 10^-11$ \\ \hline
+        $10^{-11}$ & 17 & 9.8696044010814   & $7.958078640513122 \times 10^-12$  \\ \hline
+        $10^{-12}$ & 19 & 9.869604401088933 & $4.2454928461665986 \times 10^-13$ \\ \hline
+        $10^{-13}$ & 21 & 9.869604401089335 & $2.3092638912203256 \times 10^-14$ \\ \hline
+        $10^{-14}$ & 22 & 9.869604401089353 & $5.329070518200751 \times 10^-15$  \\ \hline
+        $10^{-15}$ & 24 & 9.869604401089358 & $0.0$                              \\ \hline
+    \end{tabular}
+    \vspace{0.2cm}
+    \caption{Resultados da aproximação da série S ($\pi^2$)}
+\end{table}
 
 \section{Resolução da Questão 3}
 
@@ -275,7 +343,7 @@ efetuando o arredondamento para $1.0$. Por fim, a operação realizada
     \caption{Resultados da aproximação da constante de Euler utilizando a Fórmula A.}
     \label{tab:formula_a}
 \end{table}
-\break
+\pagebreak
 
 Por outro lado, a fórmula B (Tabela \ref{tab:formula_b}) mostra um 
 comportamento estável. Ao aumentar a quantidade de termos da série, 

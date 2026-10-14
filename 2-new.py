@@ -18,11 +18,11 @@ def S(eps):
         k += 1
 
     # Remove 2 smallest and insert their sum until 1 remains
-    lst.sort()
+    lst.sort(key = abs)
     while len(lst) > 1:
         res = lst[0] + lst[1]
         lst = lst[2:]
-        bisect.insort(lst, res)
+        bisect.insort(lst, res, key = abs)
     res = lst[0]
 
     # Return number of iterations, result and absolute error
