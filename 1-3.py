@@ -6,3 +6,5 @@ def epsilon():
         eps /= 2
 
     return eps*2
+
+print(epsilon())
