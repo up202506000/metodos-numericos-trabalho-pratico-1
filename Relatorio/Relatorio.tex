@@ -137,7 +137,7 @@ precisão dupla:
 \subsection{Majorar o erro}
 
 No âmbito da resolução da questão, é pedido que seja calculado 
-um valor aproximado da soma da série dada por:
+um valor aproximado da série dada por:
 
 \begin{equation}
     S = 18 \sum_{k=1}^{\infty} \frac{k!^2}{k^2 (2k)!}
@@ -291,7 +291,6 @@ def S(eps):
         res = lst[0] + lst[1]
         lst = lst[2:]
         bisect.insort(lst, res, key = abs)
-    res = lst[0]
 
     # Retornar o numero de iteracoes,
     # o resultado e o erro absoluto
@@ -322,7 +321,7 @@ def S(eps):
 Se olharmos de novo para o último teste, vemos que o erro absoluto agora
 é marcado como $0.0$, isto significa que o resultado é exatamente igual
 à representação de $\pi^2$ em precisão dupla, ou seja, o erro associado
-é o erro por arredondamento: $2^{-50} < 9 \times 10^{-16} < 10^{-15}$ \\
+é o erro de arredondamento: $2^{-50} < 9 \times 10^{-16} < 10^{-15}$ \\
 Assim, o nosso programa satisfaz todos os critérios do exercício.
 \pagebreak
 

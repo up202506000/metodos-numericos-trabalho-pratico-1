@@ -23,7 +23,6 @@ def S(eps):
         res = lst[0] + lst[1]
         lst = lst[2:]
         bisect.insort(lst, res, key = abs)
-    res = lst[0]
 
     # Return number of iterations, result and absolute error
     return (
