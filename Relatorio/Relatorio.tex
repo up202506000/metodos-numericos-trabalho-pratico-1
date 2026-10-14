@@ -71,7 +71,7 @@ para ver como este pode influenciar os resultados obtidos.
 \section{Resolução da Questão 1}
 
 Para este trabalho, decidimos usar a linguagem python, o que nos
-facilita muito a vida neste exercicio já que a solução é tão simples
+facilita muito a vida neste exercício já que a solução é tão simples
 quanto ler uma constante embutida:
 
 \begin{center}
@@ -103,7 +103,7 @@ print(math.nextafter(1.0, math.inf) - 1.0)
 Alternativamente, se não quisermos importar módulos, podemos
 dividir $1$ por $2$ repetidamente até termos um valor que, ao
 somar a $1$, não altera o valor e retornar o dobro deste
-(Vale constar que isto só funciona porque valores em virgula
+(Vale notar que isto só funciona porque valores em vírgula
 flutuante IEEE 754 realizam arredondamento ao par mais próximo):
 
 \begin{center}
@@ -189,7 +189,7 @@ Assim, temos que:
 \bigskip
 
 \noindent
-Logo, podemos usar a seguinte formula para majorar o erro:
+Logo, podemos usar a seguinte fórmula para majorar o erro:
 \medskip
 
 \begin{equation}
@@ -249,14 +249,14 @@ Após executar os testes pedidos no exercicio, obtivemos a seguinte tabela:
 
 \noindent
 Algo que podemos notar olhando para a tabela é que a função falha
-no ultimo teste. Era esperado um valor com erro menor do que $10^{-15}$,
+no último teste. Era esperado um valor com erro menor do que $10^{-15}$,
 no entanto foi calculado um valor de erro superior. Como $\pi^2$ está
 entre 8 e 16, o seu expoente em representação virgula flutuante binária
 é igual a 3, e como nós estamos a trabalhar com dupla precisão, temos
 que o erro por arredondamento é de até
 $2^{3-53} = 2^{-50} \approx 9 \times 10^{-16}$, o que é muito próximo
-de $10^{-15}$. Isto significa que é muito dificil de obter um erro menor
-do que $10^{-15}$, mas não é impossivel.
+de $10^{-15}$. Isto significa que é muito difícil de obter um erro menor
+do que $10^{-15}$, mas não é impossível.
 \pagebreak
 
 \subsection{Segundo algoritmo}
@@ -319,7 +319,7 @@ def S(eps):
 \end{table}
 
 \noindent
-Se olharmos de novo para o ultimo teste, vêmos que o erro absoluto agora
+Se olharmos de novo para o ultimo teste, vemos que o erro absoluto agora
 é marcado como $0.0$, isto significa que o resultado é exatamente igual
 à representação de $\pi^2$ em precisão dupla, ou seja, o erro associado
 é o erro por arredondamento: $2^{-50} < 9 \times 10^{-16} < 10^{-15}$ \\
