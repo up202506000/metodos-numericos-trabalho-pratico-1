@@ -64,14 +64,14 @@
 Este trabalho prático tem como foco a resolução de problemas de 
 aproximação de constantes matemáticas (como $e$ e $\pi^2$) em ambiente 
 computacional, exigindo que os resultados cumpram critérios de paragem 
-analíticos baseados na majoração do erro de truncatura. Paralelamente, 
-procuramos investigar o limite de precisão da máquina (epsilon da máquina)
+analíticos baseados na majoração do erro de truncamento. Paralelamente, 
+procuramos investigar o limite de precisão da máquina (épsilon da máquina)
 para ver como este pode influenciar os resultados obtidos.
 
 \section{Resolução da Questão 1}
 
-Para este trabalho, decidimos usar a linguagem python, o que nos
-facilita muito a vida neste exercício já que a solução é tão simples
+Para este trabalho, decidimos usar a linguagem Python, o que nos
+facilita bastante a vida neste exercício já que a solução é tão simples
 quanto ler uma constante embutida:
 
 \begin{center}
@@ -84,7 +84,7 @@ print(sys.float_info.epsilon)
 \end{center}
 
 \noindent
-Ainda assim, o exercicio pede para ``calcular'' o valor de epsilon de
+Ainda assim, o exercício pede para ``calcular'' o valor de épsilon de
 máquina, e aqui não é bem isso que estamos a fazer. Por este motivo
 decidimos implementar algumas maneiras alternativas de obter este valor.
 Uma maneira é encontrar o valor imediatamente maior do que $1$ e
@@ -102,7 +102,7 @@ print(math.nextafter(1.0, math.inf) - 1.0)
 \noindent
 Alternativamente, se não quisermos importar módulos, podemos
 dividir $1$ por $2$ repetidamente até termos um valor que, ao
-somar a $1$, não altera o valor e retornar o dobro deste
+somar a $1$, não altera o valor, e retornar o seu dobro
 (Vale notar que isto só funciona porque valores em vírgula
 flutuante IEEE 754 realizam arredondamento ao par mais próximo):
 
@@ -123,7 +123,7 @@ print(epsilon())
 \end{center}
 
 \noindent
-Todos estes programas imprimem o valor de epsilon de máquina para
+Todos estes programas imprimem o valor de épsilon de máquina para
 precisão dupla:
 \bigskip
 
@@ -227,7 +227,7 @@ def S(eps):
 \end{center}
 
 \noindent
-Após executar os testes pedidos no exercicio, obtivemos a seguinte tabela:
+Após executar os testes pedidos no exercício, obtivemos a seguinte tabela:
 
 \begin{table}[H]
     \centering
@@ -248,11 +248,11 @@ Após executar os testes pedidos no exercicio, obtivemos a seguinte tabela:
 \end{table}
 
 \noindent
-Algo que podemos notar olhando para a tabela é que a função falha
+Algo que podemos notar ao olhar para a tabela é que a função falha
 no último teste. Era esperado um valor com erro menor do que $10^{-15}$,
 no entanto foi calculado um valor de erro superior. Como $\pi^2$ está
-entre 8 e 16, o seu expoente em representação virgula flutuante binária
-é igual a 3, e como nós estamos a trabalhar com dupla precisão, temos
+entre 8 e 16, o seu expoente em representação vírgula flutuante binária
+é igual a 3, e como nós estamos a trabalhar com precisão dupla, temos
 que o erro por arredondamento é de até
 $2^{3-53} = 2^{-50} \approx 9 \times 10^{-16}$, o que é muito próximo
 de $10^{-15}$. Isto significa que é muito difícil de obter um erro menor
@@ -319,11 +319,11 @@ def S(eps):
 \end{table}
 
 \noindent
-Se olharmos de novo para o ultimo teste, vemos que o erro absoluto agora
+Se olharmos de novo para o último teste, vemos que o erro absoluto agora
 é marcado como $0.0$, isto significa que o resultado é exatamente igual
 à representação de $\pi^2$ em precisão dupla, ou seja, o erro associado
 é o erro por arredondamento: $2^{-50} < 9 \times 10^{-16} < 10^{-15}$ \\
-Assim, o nosso programa satisfaz todos os critérios do exercicio.
+Assim, o nosso programa satisfaz todos os critérios do exercício.
 \pagebreak
 
 \section{Resolução da Questão 3}
@@ -381,7 +381,7 @@ def b_euler(m):
 \end{center}
 \pagebreak
 
-\subsection{Discussão dos Resultados da Formula A}
+\subsection{Discussão dos Resultados da Fórmula A}
 
 Pela análise dos resultados da fórmula A (Tabela \ref{tab:formula_a}), 
 observa-se que, ao aumentar o valor de $n$, a sucessão começa a convergir 
@@ -392,7 +392,7 @@ da máquina, o que provoca perdas severas de algarismos significativos.
 Ao elevar esta base, já com erros de arredondamento, a um expoente muito 
 elevado, o pequeno erro inicial sofre uma propagação massiva que corrompe 
 o resultado final. O caso extremo ocorre quando $n=10^{16}$, onde a parcela 
-$1/n$ ($10^{-16}$) é inferior ao epsilon da máquina. Nesta iteração, 
+$1/n$ ($10^{-16}$) é inferior ao épsilon da máquina. Nesta iteração,
 o computador não consegue distinguir $1.0$ da soma $1.0 + 10^{-16}$, 
 efetuando o arredondamento para $1.0$. Por fim, a operação realizada 
 é $1.0^{10^{16}}$, o que resulta em $1.0$.
@@ -426,7 +426,7 @@ efetuando o arredondamento para $1.0$. Por fim, a operação realizada
 \end{table}
 \pagebreak
 
-\subsection{Discussão dos Resultados da Formula B}
+\subsection{Discussão dos Resultados da Fórmula B}
 
 Por outro lado, a fórmula B (Tabela \ref{tab:formula_b}) mostra um 
 comportamento estável. Ao aumentar a quantidade de termos da série, 
@@ -434,7 +434,7 @@ os valores convergem de forma consistente para o valor real da constante,
 verificando-se uma estagnação a partir da iteração $m=17$. Esta estagnação 
 deve-se ao limite de precisão do computador. Para $m=18$, o termo a 
 adicionar à soma é $1/18! \approx 1.56 \times 10^{-16}$, que é inferior 
-ao epsilon da máquina. Por conseguinte, os termos a partir da décima 
+ao épsilon da máquina. Por conseguinte, os termos a partir da décima
 oitava iteração não agregam qualquer valor à soma acumulada, uma vez que 
 estes excedem a capacidade de representação da mantissa do sistema, sendo 
 ignorados durante o processo de arredondamento.
